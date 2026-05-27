@@ -1,0 +1,12 @@
+name: Infra CI
+
+on:
+  push:
+    paths:
+      - 'infra/**'
+
+jobs:
+  call-reusable:
+    uses: ./.github/workflows/reusable-ci.yml
+    with:
+      component: infra
