@@ -1,0 +1,12 @@
+name: Frontend CI
+
+on:
+  push:
+    paths:
+      - 'frontend/**'
+
+jobs:
+  call-reusable:
+    uses: ./.github/workflows/reusable-ci.yml
+    with:
+      component: frontend
