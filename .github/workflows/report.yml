@@ -1,0 +1,22 @@
+name: Pipeline Report
+
+on:
+  workflow_run:
+    workflows:
+      - Frontend CI
+      - Backend CI
+      - Infra CI
+    types:
+      - completed
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report summary
+        run: |
+          echo "## Pipeline Report" >> $GITHUB_STEP_SUMMARY
+          echo "- Workflow triggered: ${{ github.event.workflow.name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Status: ${{ github.event.workflow_run.conclusion }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Branch: ${{ github.event.workflow_run.head_branch }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Triggered at: ${{ github.event.workflow_run.created_at }}" >> $GITHUB_STEP_SUMMARY
