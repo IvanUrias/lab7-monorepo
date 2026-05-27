@@ -1,2 +1,2 @@
-// Frontend app
-console.log("Frontend component");
+// Frontend app - v2
+console.log("Frontend component updated");
